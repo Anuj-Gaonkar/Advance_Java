@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+<script>
+	function check() {
+		let url = "login.html";
+		let uname = getCookie('uname');
+		let upass = getCookie('upass');
+		if(uname != null && upass != null) {
+			url = "welcome.html";
+		}
+		document.getElementById("link").innerHTML = "<a href='" + url + "'>Click here</a> to continue..";		
+	}
+	
+	function getCookie(cname) {
+	  let name = cname + "=";
+	  let decodedCookie = decodeURIComponent(document.cookie);
+	  let ca = decodedCookie.split(';');
+	  for(let i = 0; i <ca.length; i++) {
+	    let c = ca[i];
+	    while (c.charAt(0) == ' ') {
+	      c = c.substring(1);
+	    }
+	    if (c.indexOf(name) == 0) {
+	      return c.substring(name.length, c.length);
+	    }
+	  }
+	  return null;
+	}
+</script>
+</head>
+<body onload="check()">
+	<form action="test.cdac">
+		<button type="submit" name="test" value="login">LOGIN</button>
+		<button type="submit" name="test" value="register">REGISTER</button>
+	</form>
+	<div id="link">LINK</div>
+</body>
+</html>
